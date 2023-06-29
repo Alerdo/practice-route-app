@@ -1,4 +1,4 @@
-import { Route, Routes, Link, NavLink } from "react-router-dom";
+import { Route, Routes, Link, NavLink, useLocation } from "react-router-dom";
 import { BookList } from "./Components/BookList";
 import { Home } from "./Components/Home";
 import { Book } from "./Components/Book";
@@ -8,8 +8,11 @@ import { BookLayout } from "./Components/BookLayout";
 import { BookRoutes } from "./Components/BookRoutes";
 import "./App.css";
 
-
 function App() {
+
+ const location = useLocation();
+ console.log(location)
+ //this is a way how to pass information between diffrent components passing state, the url and nothing else gets affected
 return (
 <>
     {/* <Routes location="/bookList">  {/*If we harcode the location in the paretn rout the child rout will show everywher on every root otherwise it will show only on the child of this route */}
@@ -19,12 +22,12 @@ return (
 
  <nav>
   <ul>
-    <li><Link to="/"  replace>Home</Link></li> {/* replace, it goes back 2 pages, reloadDocument-when click it reload the contect not only show the router,state- */}
+    <li><Link to="/"  replace>Home</Link></li> {/* replace, it goes back 2 pages, reloadDocument - when click it reload the contect not only show the router,state- */}
     <li><Link to="/bookList" >BookList</Link></li>
   </ul>
  </nav>
 
-    <NavLink to='/'  style={{display: "block",margin: 20}}>Home 1 </NavLink>
+    <NavLink to='/' state="hi" style={{display: "block",margin: 20}}>Home 1 </NavLink>
     <NavLink to='/bookList'  style={{display: "block",margin: 20}}>BookList 2 </NavLink>
 
 
