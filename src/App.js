@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Link } from "react-router-dom";
+import { BookList } from "./Components/BookList";
+import { Home } from "./Components/Home";
+import { Book } from "./Components/Book";
+import { Authors } from "./Components/Authors";
+import { NotFound } from "./Components/NotFound";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+return (
+<>
+ <nav>
+  <ul>
+    <li><Link to="/" >Home</Link></li>
+    <li><Link to="/bookList" >BookList</Link></li>
+  </ul>
+ </nav>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/bookList">
+      <Route index element={<BookList />} />
+      <Route path=":id" element={ <Book />} />
+      <Route path="authors" element={ <Authors />} />
+    </Route>
+    <Route path="*" element={<NotFound />} /> 
+   
+   
+   
+   
+    {/* <Route path="/booklist" element={ <BookList />} />
+    <Route path="/booklist/:id" element={ <Book />} />
+    <Route path="/booklist/authors" element={ <Authors />} /> */}
+    
+  </Routes>
+</>
+  )
+  
 }
-
 export default App;
