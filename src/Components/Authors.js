@@ -6,7 +6,7 @@ export function Authors() {
     
     <>
     <h1>Authors</h1>
-    <h3>This is the contex of the outlet: {obj.name}</h3>
+    <h3></h3>
      
     </>
   );
